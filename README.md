@@ -37,10 +37,21 @@ An intelligent chatbot that simplifies regulatory compliance. Upload your PDFs, 
     ```
 
 3.  **Ingest a document:**
-    Open a new terminal and use the following command to upload a PDF (e.g., `gdpr.pdf`) and teach the chatbot.
+    For security purposes, the `rag_service` is not directly exposed to the host machine for external access on `localhost:8000`. To ingest documents, you need to execute the `curl` command from within the `rag-engine` Docker container.
+
+    First, ensure your PDF document (e.g., `gdpr.pdf`) is located in the `rag_service/data` directory so it's accessible within the container at `/app/data/`.
+
+    Then, open a new terminal and run the following commands:
     ```bash
-    curl -X POST -F "file=@gdpr.pdf" http://localhost:8000/ingest
+    # Find the container ID or name of the running rag-engine service
+    docker ps
+
+    # Execute the ingest command from within the rag-engine container
+    docker exec -it <rag-engine-container-id-or-name> curl -X POST -F "file=@/app/data/gdpr.pdf" http://localhost:8000/ingest
     ```
+    Replace `<rag-engine-container-id-or-name>` with the actual ID or name of your `compliance-rag-engine` container.
+
+    *Note: Ensure the filename in the curl command matches the PDF file placed in the `rag_service/data` directory.*
 
 4.  **Access the Chatbot:**
     Open your web browser and navigate to `http://localhost:8080`. You can now start asking questions.
