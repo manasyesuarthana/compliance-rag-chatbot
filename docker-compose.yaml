@@ -9,6 +9,8 @@ services:
       - ./rag_service/data:/app/data            
     environment:
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    networks:
+      - app-net
 
   middleware:
     build: ./server
