@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  rag-engine:
+    build: ./rag_service
+    container_name: compliance-rag-engine
+    volumes:
+      - ./rag_service/chroma_db:/app/chroma_db
+      - ./rag_service/data:/app/data            
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+
+  middleware:
+    build: ./server
+    container_name: compliance-middleware
+    ports:
+      - "3000:3000"
+    environment:
+      - RAG_SERVICE_URL=http://rag-engine:8000
+    depends_on:
+      - rag-engine
+    networks:
+      - app-net
+
+  client:
+    build: ./client
+    container_name: compliance-client
+    ports:
+      - "8080:80"
+    depends_on:
+      - middleware
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge
