@@ -13,8 +13,8 @@ An intelligent chatbot that simplifies regulatory compliance. Upload your PDFs, 
 
 -   **Frontend:** React, Vite, Tailwind CSS
 -   **Middleware:** Node.js, Express
--   **Backend (AI/RAG):** Python, FastAPI, Langchain, Gemini 1.5 Pro
--   **Vector Database:** ChromaDB
+-   **Backend (AI/RAG):** Python, FastAPI, Langchain, Gemini 2.5 Flash
+-   **Vector Database:** ChromaDB with provided documents for initial model knowledge
 -   **Containerization:** Docker, Docker Compose
 
 ## Getting Started
