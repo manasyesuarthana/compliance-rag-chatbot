@@ -6,3 +6,5 @@ node_modules/
 chroma_db/
 instructions.md
 GEMINI.md
+check_models.py
+__pycache__
