@@ -17,6 +17,11 @@ An intelligent chatbot that simplifies regulatory compliance. Upload your PDFs, 
 -   **Vector Database:** ChromaDB with provided documents for initial model knowledge
 -   **Containerization:** Docker, Docker Compose
 
+<br/>
+<p align="center">
+  <img src="./images/system_architecture.png" alt="system architecture" height="400"/>
+</p>
+
 ## Getting Started
 
 ### Prerequisites
@@ -54,4 +59,9 @@ An intelligent chatbot that simplifies regulatory compliance. Upload your PDFs, 
     *Note: Ensure the filename in the curl command matches the PDF file placed in the `rag_service/data` directory.*
 
 4.  **Access the Chatbot:**
-    Open your web browser and navigate to `http://localhost:8080`. You can now start asking questions.
+    Open your web browser and navigate to `http://localhost:8080`. You can now start asking questions:
+
+<br/>
+<p align="center">
+  <img src="./images/interface.png" alt="chatbot interface" height="400"/>
+</p>
